@@ -1,9 +1,9 @@
 import streamlit as st
 from posts_manager.manager import DbManager
-from streamlit_searchbox import st_searchbox
 
 def main():
-
+    st.title('IC:red[News]')
+    st.divider()
     searchterm = st.text_input('Digite o termo a ser buscado')
     option = st.radio("Campo em que o termo está presente",("Título",'Corpo'))
     if st.button('Buscar'):
@@ -19,6 +19,8 @@ def main():
                 st.divider()
                 st.title(post[1])
                 st.subheader(post[2])
+                if post[7]:
+                    st.image(post[7],use_column_width=True)
                 st.caption(post[3])
                 st.caption(f'Autor: {post[0]}')
                 st.caption(f'Data: {post[5]}')

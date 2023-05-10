@@ -8,10 +8,10 @@ class DbManager:
         self.c = self.conn.cursor()
 
     def create_table(self):
-        self.c.execute('CREATE TABLE IF NOT EXISTS news_portal_posts(author TEXT,title TEXT, subheader TEXT, caption TEXT, body TEXT, date DATE,category TEXT)')
+        self.c.execute('CREATE TABLE IF NOT EXISTS news_portal_posts(author TEXT,title TEXT, subheader TEXT, caption TEXT, body TEXT, date DATE,category TEXT, image TEXT)')
 
-    def add_post(self,author, title, subheader, caption, body, date, category):
-        self.c.execute(f'INSERT INTO news_portal_posts(author,title,subheader,caption,body,date,category) VALUES (?,?,?,?,?,?,?)',(author, title, subheader, caption, body, date, category))
+    def add_post(self,author, title, subheader, caption, body, date, category,image):
+        self.c.execute(f'INSERT INTO news_portal_posts(author,title,subheader,caption,body,date,category,image) VALUES (?,?,?,?,?,?,?,?)',(author, title, subheader, caption, body, date, category,image))
         self.conn.commit()
     
     def view_all_posts(self):
